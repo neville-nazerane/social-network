@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SocialNetwork.Core.Defaults;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -9,7 +10,7 @@ namespace SocialNetwork.Core.Entities
     /// <summary>
     /// Aim is to not touch the user entity for common operations
     /// </summary>
-    public class DisplayUser
+    public class DisplayUser : IEntityDefaults
     {
 
         public int Id { get; set; }

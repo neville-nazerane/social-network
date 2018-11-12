@@ -1,12 +1,15 @@
-﻿using System;
+﻿using SocialNetwork.Core.Defaults;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace SocialNetwork.Core.Entities
 {
-    public class Friend
+    public class Friend : IEntityDefaults
     {
+
+        public int Id { get; set; }
 
         [Required]
         public int? User1Id { get; set; }
