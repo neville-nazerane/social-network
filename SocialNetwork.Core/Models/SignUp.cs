@@ -26,5 +26,7 @@ namespace SocialNetwork.Core.Models
         [Compare(nameof(Password), ErrorMessage = PasswordMismatch)]
         public string ConfirmPassword { get; set; }
 
+        public string ReturnURL { get; set; }
+
     }
 }

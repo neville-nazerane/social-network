@@ -15,7 +15,7 @@ namespace SocialNetwork.Services
 
         Task<bool> SignUp(SignUp signUp);
 
-        Task<bool> Login(Login login);
+        Task<bool> LoginAsync(Login login);
 
     }
 }

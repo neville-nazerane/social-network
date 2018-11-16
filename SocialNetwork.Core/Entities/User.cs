@@ -7,6 +7,8 @@ namespace SocialNetwork.Core.Entities
 {
     public class User : IdentityUser<int>
     {
-        
+
+        public DisplayUser DisplayUser { get; set; }
+
     }
 }

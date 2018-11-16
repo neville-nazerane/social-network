@@ -44,7 +44,7 @@ namespace SocialNetwork.WebHelper
 
         public string UserName => UserManager.GetUserName(User);
          
-        public async Task<bool> Login(Login login)
+        public async Task<bool> LoginAsync(Login login)
         {
             var result = await signInManager.PasswordSignInAsync(login.UserName, login.Password, true, false);
             if (result.Succeeded)
