@@ -3,15 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetwork.Core", "SocialNetwork.Core\SocialNetwork.Core.csproj", "{EBDBAF6A-1943-4E4C-AE05-D38CFA5E8CE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialNetwork.Core", "SocialNetwork.Core\SocialNetwork.Core.csproj", "{EBDBAF6A-1943-4E4C-AE05-D38CFA5E8CE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetwork.Data", "SocialNetwork.Data\SocialNetwork.Data.csproj", "{3817630B-63D0-4B89-8A59-D969B00E5CDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialNetwork.Data", "SocialNetwork.Data\SocialNetwork.Data.csproj", "{3817630B-63D0-4B89-8A59-D969B00E5CDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetwork.Services", "SocialNetwork.Services\SocialNetwork.Services.csproj", "{96F2DC1B-B870-472A-B4C7-F5F3D36F10F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialNetwork.Services", "SocialNetwork.Services\SocialNetwork.Services.csproj", "{96F2DC1B-B870-472A-B4C7-F5F3D36F10F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetwork.DataAccess", "SocialNetwork.DataAccess\SocialNetwork.DataAccess.csproj", "{06B37E2B-20F7-4840-8B1B-EE710A93E15D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialNetwork.DataAccess", "SocialNetwork.DataAccess\SocialNetwork.DataAccess.csproj", "{06B37E2B-20F7-4840-8B1B-EE710A93E15D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetwork.Business", "SocialNetwork.Business\SocialNetwork.Business.csproj", "{15F2EA46-010C-4D04-AE27-C19B53D3151D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialNetwork.Business", "SocialNetwork.Business\SocialNetwork.Business.csproj", "{15F2EA46-010C-4D04-AE27-C19B53D3151D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetwork.WebHelper", "SocialNetwork.WebHelper\SocialNetwork.WebHelper.csproj", "{82558D7E-9947-45D1-926D-A81B1044BA29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetwork.Website", "SocialNetwork.Website\SocialNetwork.Website.csproj", "{3219AF7D-8B22-4EF6-91FF-5AF3B2AE8144}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +87,30 @@ Global
 		{15F2EA46-010C-4D04-AE27-C19B53D3151D}.Release|x64.Build.0 = Release|Any CPU
 		{15F2EA46-010C-4D04-AE27-C19B53D3151D}.Release|x86.ActiveCfg = Release|Any CPU
 		{15F2EA46-010C-4D04-AE27-C19B53D3151D}.Release|x86.Build.0 = Release|Any CPU
+		{82558D7E-9947-45D1-926D-A81B1044BA29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82558D7E-9947-45D1-926D-A81B1044BA29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82558D7E-9947-45D1-926D-A81B1044BA29}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{82558D7E-9947-45D1-926D-A81B1044BA29}.Debug|x64.Build.0 = Debug|Any CPU
+		{82558D7E-9947-45D1-926D-A81B1044BA29}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{82558D7E-9947-45D1-926D-A81B1044BA29}.Debug|x86.Build.0 = Debug|Any CPU
+		{82558D7E-9947-45D1-926D-A81B1044BA29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82558D7E-9947-45D1-926D-A81B1044BA29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82558D7E-9947-45D1-926D-A81B1044BA29}.Release|x64.ActiveCfg = Release|Any CPU
+		{82558D7E-9947-45D1-926D-A81B1044BA29}.Release|x64.Build.0 = Release|Any CPU
+		{82558D7E-9947-45D1-926D-A81B1044BA29}.Release|x86.ActiveCfg = Release|Any CPU
+		{82558D7E-9947-45D1-926D-A81B1044BA29}.Release|x86.Build.0 = Release|Any CPU
+		{3219AF7D-8B22-4EF6-91FF-5AF3B2AE8144}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3219AF7D-8B22-4EF6-91FF-5AF3B2AE8144}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3219AF7D-8B22-4EF6-91FF-5AF3B2AE8144}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3219AF7D-8B22-4EF6-91FF-5AF3B2AE8144}.Debug|x64.Build.0 = Debug|Any CPU
+		{3219AF7D-8B22-4EF6-91FF-5AF3B2AE8144}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3219AF7D-8B22-4EF6-91FF-5AF3B2AE8144}.Debug|x86.Build.0 = Debug|Any CPU
+		{3219AF7D-8B22-4EF6-91FF-5AF3B2AE8144}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3219AF7D-8B22-4EF6-91FF-5AF3B2AE8144}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3219AF7D-8B22-4EF6-91FF-5AF3B2AE8144}.Release|x64.ActiveCfg = Release|Any CPU
+		{3219AF7D-8B22-4EF6-91FF-5AF3B2AE8144}.Release|x64.Build.0 = Release|Any CPU
+		{3219AF7D-8B22-4EF6-91FF-5AF3B2AE8144}.Release|x86.ActiveCfg = Release|Any CPU
+		{3219AF7D-8B22-4EF6-91FF-5AF3B2AE8144}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

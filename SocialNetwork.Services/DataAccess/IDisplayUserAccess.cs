@@ -10,7 +10,7 @@ namespace SocialNetwork.Services.DataAccess
                         : IGenericAccess<DisplayUser, DisplayUserAdd, DisplayUserUpdate>
     {
 
-
+        bool DisplayUserExists(string displayName);
 
     }
 }

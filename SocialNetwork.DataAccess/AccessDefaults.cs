@@ -1,19 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SocialNetwork.Core.Defaults;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace SocialNetwork.DataAccess
 {
-    abstract class AccessDefaults<TEntity, TAdd, TUpdate>
+    public abstract class AccessDefaults<TEntity, TAdd, TUpdate>
         where TEntity : class, IEntityDefaults
         where TUpdate : IUpdateDefaults
     {
-        public AppDbContext Context { get; }
+        internal readonly AppDbContext context;
 
-        protected AccessDefaults(AppDbContext context)
+        internal AccessDefaults(AppDbContext context)
         {
-            Context = context;
+            this.context = context;
         }
 
         protected abstract TEntity AddMapping(TAdd add);
@@ -21,9 +22,17 @@ namespace SocialNetwork.DataAccess
         public virtual TEntity Add(TAdd add)
         {
             var toAdd = AddMapping(add);
-            Context.Add(toAdd);
-            Context.SaveChanges();
-            return toAdd;
+            toAdd.CreatedOn = DateTime.Now;
+            context.Add(toAdd);
+            try
+            {
+                context.SaveChanges();
+                return toAdd;
+            }
+            catch (DbUpdateException)
+            {
+                return null;
+            }
         }
 
         protected abstract void UpdateMapping(TEntity toUpdate, TUpdate update);
@@ -32,8 +41,15 @@ namespace SocialNetwork.DataAccess
         {
             var toUpdate = Entity.SingleOrDefault(e => e.Id == update.Id);
             UpdateMapping(toUpdate, update);
-            Context.SaveChanges();
-            return toUpdate;
+            toUpdate.UpdatedOn = DateTime.Now;
+            try { 
+                context.SaveChanges();
+                return toUpdate;
+            }
+            catch (DbUpdateException)
+            {
+                return null;
+            }
         }
 
         protected abstract DbSet<TEntity> Entity { get; }
@@ -43,8 +59,8 @@ namespace SocialNetwork.DataAccess
 
         public virtual bool Delete(int id)
         {
-            Context.Remove(Entity.Find(id));
-            return Context.SaveChanges() == 1;
+            context.Remove(Entity.Find(id));
+            return context.SaveChanges() == 1;
         }
 
         public virtual bool Exists(int id) => Entity.Any(e => e.Id == id);

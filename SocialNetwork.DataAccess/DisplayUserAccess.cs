@@ -4,6 +4,7 @@ using SocialNetwork.Core.Models;
 using SocialNetwork.Services.DataAccess;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace SocialNetwork.DataAccess
@@ -17,7 +18,10 @@ namespace SocialNetwork.DataAccess
 
         }
 
-        protected override DbSet<DisplayUser> Entity => Context.DisplayUsers;
+        protected override DbSet<DisplayUser> Entity => context.DisplayUsers;
+
+        public bool DisplayUserExists(string displayName) 
+            => context.DisplayUsers.Any(u => u.DisplayName == displayName);
 
         protected override DisplayUser AddMapping(DisplayUserAdd add)
             => new DisplayUser {

@@ -22,5 +22,9 @@ namespace SocialNetwork.Core.Entities
         public int? UserId { get; set; }
         public User User { get; set; }
 
+        [Required]
+        public DateTime CreatedOn { get; set; }
+
+        public DateTime UpdatedOn { get; set; }
     }
 }

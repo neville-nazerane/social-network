@@ -6,14 +6,11 @@ using System.Text;
 
 namespace SocialNetwork.Services.Repositories
 {
-    interface IDisplayUserRepository
+    public interface IDisplayUserRepository 
+            : IGenericRepository<DisplayUser, DisplayUserAdd, DisplayUserUpdate>
     {
 
-        DisplayUser Add(DisplayUserAdd displayUser);
-
-        DisplayUser Update(DisplayUserUpdate displayUser);
-
-        DisplayUser Get(int id);
+        bool DisplayNameExists(string displayName);
 
     }
 }

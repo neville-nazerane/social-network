@@ -14,6 +14,9 @@ namespace SocialNetwork.Core.Models
         public string UserName { get; set; }
 
         [Required]
+        public string DisplayName { get; set; }
+
+        [Required]
         public string Email { get; set; }
 
         [Required, DataType(DataType.Password)]

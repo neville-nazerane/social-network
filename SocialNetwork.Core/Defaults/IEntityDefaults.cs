@@ -9,5 +9,9 @@ namespace SocialNetwork.Core.Defaults
 
         int Id { get; set; }
 
+        DateTime CreatedOn { get; set; }
+
+        DateTime UpdatedOn { get; set; }
+
     }
 }
