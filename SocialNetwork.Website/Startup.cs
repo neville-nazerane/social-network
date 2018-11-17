@@ -38,9 +38,8 @@ namespace SocialNetwork.Website
                     .AddCookie();
 
             services.AddDataAccess(Configuration)
-                    .AddBusiness()
-                    .AddWebHelpers()
-                    .AddDefinedIdentity().AddAppDbContext();
+                    .AddBusiness(o => o.IdentityBuilder.AddAppDb())
+                    .AddWebHelpers();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

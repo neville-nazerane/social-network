@@ -12,14 +12,17 @@ namespace SocialNetwork.WebHelper
     class LoginContext : ILoginContext
     {
         private readonly UserManager<User> userManager;
+        private readonly SignInManager<User> signInManager;
         private readonly IHttpContextAccessor httpContextAccessor;
 
         public LoginContext(
                             UserManager<User> userManager,
+                            SignInManager<User> signInManager,
                             IHttpContextAccessor httpContextAccessor
             )
         {
             this.userManager = userManager;
+            this.signInManager = signInManager;
             this.httpContextAccessor = httpContextAccessor;
         }
 
@@ -31,6 +34,7 @@ namespace SocialNetwork.WebHelper
 
         public string UserName => userManager.GetUserName(User);
 
-
+        public void RegisterLogin(User user)
+            => signInManager.SignInAsync(user, true);
     }
 }

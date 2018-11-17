@@ -9,7 +9,7 @@ namespace SocialNetwork.DataAccess.Extensions
     public static class IdentityExtensions
     {
 
-        public static IdentityBuilder AddAppDbContext(this IdentityBuilder builder)
+        public static IdentityBuilder AddAppDb(this IdentityBuilder builder)
             => builder.AddEntityFrameworkStores<AppDbContext>();
 
     }

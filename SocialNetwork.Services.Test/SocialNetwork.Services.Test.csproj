@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SocialNetwork.Business\SocialNetwork.Business.csproj" />
     <ProjectReference Include="..\SocialNetwork.DataAccess\SocialNetwork.DataAccess.csproj" />
+    <ProjectReference Include="..\SocialNetwork.TestSimulations\SocialNetwork.TestSimulations.csproj" />
   </ItemGroup>
 
 </Project>

@@ -17,16 +17,19 @@ namespace SocialNetwork.Business
         private readonly SignInManager<User> signInManager;
         private readonly IDisplayUserRepository displayUserRepository;
         private readonly ModelValidator modelValidator;
+        private readonly ILoginContext loginContext;
 
         public LoginManager(
                                 SignInManager<User> signInManager,
                                 IDisplayUserRepository displayUserRepository,
-                                ModelValidator modelValidator
+                                ModelValidator modelValidator,
+                                ILoginContext loginContext
                             )
         {
             this.signInManager = signInManager;
             this.displayUserRepository = displayUserRepository;
             this.modelValidator = modelValidator;
+            this.loginContext = loginContext;
         }
 
         UserManager<User> UserManager => signInManager.UserManager;
@@ -36,6 +39,8 @@ namespace SocialNetwork.Business
             var result = await signInManager.PasswordSignInAsync(login.UserName, login.Password, true, false);
             if (result.Succeeded)
             {
+                var user = UserManager.Users.SingleOrDefault(u => u.UserName == login.UserName);
+                loginContext.RegisterLogin(user);
                 return true;
             }
             else if (result.IsLockedOut) modelValidator.AddError("Account has been locked out");

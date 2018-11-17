@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialNetwork.Migrations", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetwork.Services.Test", "SocialNetwork.Services.Test\SocialNetwork.Services.Test.csproj", "{313A2A2A-D0B7-4BA5-9D7C-38A9E1A2EC78}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetwork.TestSimulations", "SocialNetwork.TestSimulations\SocialNetwork.TestSimulations.csproj", "{78B91DB1-7FDC-42DD-AE0D-2D599271728D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +155,18 @@ Global
 		{313A2A2A-D0B7-4BA5-9D7C-38A9E1A2EC78}.Release|x64.Build.0 = Release|Any CPU
 		{313A2A2A-D0B7-4BA5-9D7C-38A9E1A2EC78}.Release|x86.ActiveCfg = Release|Any CPU
 		{313A2A2A-D0B7-4BA5-9D7C-38A9E1A2EC78}.Release|x86.Build.0 = Release|Any CPU
+		{78B91DB1-7FDC-42DD-AE0D-2D599271728D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78B91DB1-7FDC-42DD-AE0D-2D599271728D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78B91DB1-7FDC-42DD-AE0D-2D599271728D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{78B91DB1-7FDC-42DD-AE0D-2D599271728D}.Debug|x64.Build.0 = Debug|Any CPU
+		{78B91DB1-7FDC-42DD-AE0D-2D599271728D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{78B91DB1-7FDC-42DD-AE0D-2D599271728D}.Debug|x86.Build.0 = Debug|Any CPU
+		{78B91DB1-7FDC-42DD-AE0D-2D599271728D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78B91DB1-7FDC-42DD-AE0D-2D599271728D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78B91DB1-7FDC-42DD-AE0D-2D599271728D}.Release|x64.ActiveCfg = Release|Any CPU
+		{78B91DB1-7FDC-42DD-AE0D-2D599271728D}.Release|x64.Build.0 = Release|Any CPU
+		{78B91DB1-7FDC-42DD-AE0D-2D599271728D}.Release|x86.ActiveCfg = Release|Any CPU
+		{78B91DB1-7FDC-42DD-AE0D-2D599271728D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
