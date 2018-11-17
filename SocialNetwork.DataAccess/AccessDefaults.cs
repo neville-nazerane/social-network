@@ -8,7 +8,6 @@ namespace SocialNetwork.DataAccess
 {
     public abstract class AccessDefaults<TEntity, TAdd, TUpdate>
         where TEntity : class, IEntityDefaults
-        where TUpdate : IUpdateDefaults
     {
         internal readonly AppDbContext context;
 
@@ -37,9 +36,9 @@ namespace SocialNetwork.DataAccess
 
         protected abstract void UpdateMapping(TEntity toUpdate, TUpdate update);
 
-        public virtual TEntity Update(TUpdate update)
+        public virtual TEntity Update(TUpdate update, int id)
         {
-            var toUpdate = Entity.SingleOrDefault(e => e.Id == update.Id);
+            var toUpdate = Entity.SingleOrDefault(e => e.Id == id);
             UpdateMapping(toUpdate, update);
             toUpdate.UpdatedOn = DateTime.Now;
             try { 

@@ -10,5 +10,7 @@ namespace SocialNetwork.Services.Repositories
             : IGenericRepository<DisplayUser, SignUp, DisplayUserUpdate>
     {
 
+        DisplayUser GetCurrent();
+
     }
 }

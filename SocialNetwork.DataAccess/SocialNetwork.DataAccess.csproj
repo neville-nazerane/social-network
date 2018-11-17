@@ -16,4 +16,8 @@
     <ProjectReference Include="..\SocialNetwork.Services\SocialNetwork.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Defaults\" />
+  </ItemGroup>
+
 </Project>

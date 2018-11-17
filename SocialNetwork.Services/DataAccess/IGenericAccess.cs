@@ -9,7 +9,7 @@ namespace SocialNetwork.Services.DataAccess
 
         TEntity Add(TAdd displayUser);
 
-        TEntity Update(TUpdate displayUser);
+        TEntity Update(TUpdate displayUser, int id);
 
         TEntity Get(int id);
 

@@ -6,10 +6,8 @@ using System.Text;
 
 namespace SocialNetwork.Core.Models
 {
-    public class DisplayUserUpdate : IUpdateDefaults
+    public class DisplayUserUpdate
     {
-
-        public int Id { get; set; }
 
         [Required, MaxLength(100)]
         public string FirstName { get; set; }
