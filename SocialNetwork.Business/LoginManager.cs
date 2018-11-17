@@ -36,20 +36,24 @@ namespace SocialNetwork.Business
 
         public async Task<bool> LoginAsync(Login login)
         {
-            var result = await signInManager.PasswordSignInAsync(login.UserName, login.Password, true, false);
-            if (result.Succeeded)
+            var user = UserManager.Users.SingleOrDefault(u => u.UserName == login.UserName);
+            if (user != null)
             {
-                var user = UserManager.Users.SingleOrDefault(u => u.UserName == login.UserName);
-                loginContext.RegisterLogin(user);
-                return true;
+                var result = await signInManager
+                                        .CheckPasswordSignInAsync(user, login.Password, false);
+                if (result.Succeeded)
+                {
+                    loginContext.RegisterLogin(user);
+                    return true;
+                }
+                else if (result.IsLockedOut) modelValidator.AddError("Account has been locked out");
+                else if (result.IsNotAllowed) modelValidator.AddError("Invalid login");
             }
-            else if (result.IsLockedOut) modelValidator.AddError("Account has been locked out");
-            else if (result.IsNotAllowed) modelValidator.AddError("Invalid login");
-            else modelValidator.AddError("Login failed");
+            modelValidator.AddError("Login failed");
             return false;
         }
 
-        public async Task<bool> SignUp(SignUp signUp)
+        public async Task<bool> SignUpAsync(SignUp signUp)
         {
             var user = new User
             {

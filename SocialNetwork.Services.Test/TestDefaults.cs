@@ -17,14 +17,15 @@ namespace SocialNetwork.Services.Test
             var services = new ServiceCollection()
                             .AddTestDataAccess()
                             .AddTestSimulations()
-                            .AddBusiness(o => o.IdentityBuilder.AddAppDb());
+                            .AddBusiness(o => o.IdentityBuilder.AddAppDb())
+                            .AddNetCoreValidations();
             provider = services.BuildServiceProvider();
         }
 
         protected T GetService<T>() => provider.GetService<T>();
 
         protected const string DefaultUserName = "neville";
-        protected const string DefaultPassword = "Hello123";
+        protected const string DefaultPassword = "Hello123!";
 
         protected SignUp DefaultSignUp => new SignUp {
             UserName = DefaultUserName,

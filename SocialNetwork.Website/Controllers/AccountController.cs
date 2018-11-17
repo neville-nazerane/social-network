@@ -33,7 +33,7 @@ namespace SocialNetwork.Website.Controllers
         [HttpPost]
         public async Task<IActionResult> SignUp(SignUp signUp)
         {
-            if (await loginManager.SignUp(signUp)) return Redirect(signUp.ReturnURL);
+            if (await loginManager.SignUpAsync(signUp)) return Redirect(signUp.ReturnURL);
             else return this.ValidateAndView(signUp);
         }
 

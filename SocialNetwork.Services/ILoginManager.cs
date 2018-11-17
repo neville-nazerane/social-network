@@ -9,7 +9,7 @@ namespace SocialNetwork.Services
     public interface ILoginManager
     {
 
-        Task<bool> SignUp(SignUp signUp);
+        Task<bool> SignUpAsync(SignUp signUp);
 
         Task<bool> LoginAsync(Login login);
 

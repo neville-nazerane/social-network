@@ -2,6 +2,7 @@
 using SocialNetwork.Business;
 using SocialNetwork.Business.Extensions;
 using SocialNetwork.Core.Entities;
+using SocialNetwork.Services;
 using SocialNetwork.Services.Repositories;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,9 @@ namespace Microsoft.Extensions.DependencyInjection
                 IdentityBuilder = services.AddIdentity<User, UserRole>()
             };
             options.Invoke(opts);
-            return services.AddScoped<IDisplayUserRepository, DisplayUserRepository>();
+            return services
+                        .AddScoped<ILoginManager, LoginManager>()
+                        .AddScoped<IDisplayUserRepository, DisplayUserRepository>();
         }
 
     }
