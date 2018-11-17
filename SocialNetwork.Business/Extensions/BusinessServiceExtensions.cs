@@ -1,4 +1,6 @@
-﻿using SocialNetwork.Business;
+﻿using Microsoft.AspNetCore.Identity;
+using SocialNetwork.Business;
+using SocialNetwork.Core.Entities;
 using SocialNetwork.Services.Repositories;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,9 @@ namespace Microsoft.Extensions.DependencyInjection
 
         public static IServiceCollection AddBusiness(this IServiceCollection services)
             => services.AddScoped<IDisplayUserRepository, DisplayUserRepository>();
+
+        public static IdentityBuilder AddDefinedIdentity(this IServiceCollection services)
+            => services.AddIdentity<User, UserRole>();
 
     }
 }

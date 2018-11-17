@@ -9,10 +9,6 @@ namespace SocialNetwork.Services
     public interface ILoginManager
     {
 
-        int UserId { get; }
-
-        string UserName { get; }
-
         Task<bool> SignUp(SignUp signUp);
 
         Task<bool> LoginAsync(Login login);

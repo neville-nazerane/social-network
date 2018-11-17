@@ -10,7 +10,7 @@ using System.Text;
 namespace SocialNetwork.DataAccess
 {
     class DisplayUserAccess 
-            : AccessDefaults<DisplayUser, DisplayUserAdd, DisplayUserUpdate>, IDisplayUserAccess
+            : AccessDefaults<DisplayUser, SignUp, DisplayUserUpdate>, IDisplayUserAccess
     {
 
         public DisplayUserAccess(AppDbContext context) : base(context)
@@ -20,17 +20,16 @@ namespace SocialNetwork.DataAccess
 
         protected override DbSet<DisplayUser> Entity => context.DisplayUsers;
 
-        public bool DisplayUserExists(string displayName) 
-            => context.DisplayUsers.Any(u => u.DisplayName == displayName);
-
-        protected override DisplayUser AddMapping(DisplayUserAdd add)
+        protected override DisplayUser AddMapping(SignUp add)
             => new DisplayUser {
-                DisplayName = add.DisplayName
+                FirstName = add.FirstName,
+                LastName = add.LastName
             };
 
         protected override void UpdateMapping(DisplayUser toUpdate, DisplayUserUpdate update)
         {
-            toUpdate.DisplayName = update.DisplayName;
+            toUpdate.FirstName = update.FirstName;
+            toUpdate.LastName = update.LastName;
         }
     }
 }

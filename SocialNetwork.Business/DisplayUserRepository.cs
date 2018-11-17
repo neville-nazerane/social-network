@@ -17,13 +17,11 @@ namespace SocialNetwork.Business
             this.access = access;
         }
 
-        public DisplayUser Add(DisplayUserAdd displayUser) => access.Add(displayUser);
+        public DisplayUser Add(SignUp displayUser) => access.Add(displayUser);
 
         public DisplayUser Update(DisplayUserUpdate displayUser) => Update(displayUser);
 
         public bool Delete(int id) => access.Delete(id);
-
-        public bool DisplayNameExists(string displayName) => access.DisplayUserExists(displayName);
 
         public bool Exists(int id) => access.Exists(id);
 

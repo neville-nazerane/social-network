@@ -7,10 +7,8 @@ using System.Text;
 namespace SocialNetwork.Services.DataAccess
 {
     public interface IDisplayUserAccess 
-                        : IGenericAccess<DisplayUser, DisplayUserAdd, DisplayUserUpdate>
+                        : IGenericAccess<DisplayUser, SignUp, DisplayUserUpdate>
     {
-
-        bool DisplayUserExists(string displayName);
-
+        
     }
 }

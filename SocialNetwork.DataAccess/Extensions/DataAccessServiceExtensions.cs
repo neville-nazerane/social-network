@@ -20,7 +20,15 @@ namespace Microsoft.Extensions.DependencyInjection
             => services.AddDbContext<AppDbContext>(config => 
                                 config.UseSqlServer(configuration
                                                 .GetConnectionString(DB.ConnectionKey)))
-                       .AddScoped<IDisplayUserAccess, DisplayUserAccess>();
+                       .Defaults();
+
+        public static IServiceCollection AddTestDataAccess(this IServiceCollection services)
+            => services.AddDbContext<AppDbContext>(config => 
+                                    config.UseInMemoryDatabase("socialNetworkTest"))
+                       .Defaults();
+
+        static IServiceCollection Defaults(this IServiceCollection services)
+            => services.AddScoped<IDisplayUserAccess, DisplayUserAccess>();
 
     }
 }

@@ -7,10 +7,8 @@ using System.Text;
 namespace SocialNetwork.Services.Repositories
 {
     public interface IDisplayUserRepository 
-            : IGenericRepository<DisplayUser, DisplayUserAdd, DisplayUserUpdate>
+            : IGenericRepository<DisplayUser, SignUp, DisplayUserUpdate>
     {
-
-        bool DisplayNameExists(string displayName);
 
     }
 }

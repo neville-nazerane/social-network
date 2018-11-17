@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="NetCore.ModelValidation.Core" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SocialNetwork.Core\SocialNetwork.Core.csproj" />
     <ProjectReference Include="..\SocialNetwork.DataAccess\SocialNetwork.DataAccess.csproj" />
     <ProjectReference Include="..\SocialNetwork.Services\SocialNetwork.Services.csproj" />

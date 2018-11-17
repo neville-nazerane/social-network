@@ -13,13 +13,10 @@ namespace Microsoft.Extensions.DependencyInjection
     public static class WebHelperExtensions
     {
 
-        public static IdentityBuilder AddDefinedIdentity(this IServiceCollection services)
-            => services.AddIdentity<User, UserRole>();
-
         public static IServiceCollection AddWebHelpers(this IServiceCollection services) 
             => services
                 .AddSingleton<IHttpContextAccessor, HttpContextAccessor>()
-                .AddScoped<ILoginManager, LoginManager>();
+                .AddScoped<ILoginContext, LoginContext>();
 
     }
 }

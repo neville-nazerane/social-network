@@ -15,8 +15,11 @@ namespace SocialNetwork.Core.Entities
 
         public int Id { get; set; }
 
-        [Required, MaxLength(60)]
-        public string DisplayName { get; set; }
+        [Required, MaxLength(100)]
+        public string FirstName { get; set; }
+
+        [MaxLength(100)]
+        public string LastName { get; set; }
 
         [Required]
         public int? UserId { get; set; }
