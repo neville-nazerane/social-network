@@ -41,16 +41,22 @@ namespace SocialNetwork.Services.Test
             ConfirmPassword = DefaultPassword
         };
 
+        protected async Task SignUpAsync(SignUp signUp)
+            => await loginManager.SignUpAsync(signUp);
+
         protected async Task SignUpWithDefaultsAsync()
-            => await loginManager.SignUpAsync(DefaultSignUp);
+            => await SignUpAsync(DefaultSignUp);
             
         protected Login DefaultLogin => new Login {
             UserName = DefaultUserName,
             Password = DefaultPassword
         };
 
+        protected async Task LoginAsync(Login login)
+            => await loginManager.LoginAsync(login);
+
         protected async Task LoginWithDefaultAsync()
-            => await loginManager.LoginAsync(DefaultLogin);
+            => await LoginAsync(DefaultLogin);
 
     }
 }
