@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SocialNetwork.WebHelper
 {
@@ -34,7 +35,7 @@ namespace SocialNetwork.WebHelper
 
         public string UserName => userManager.GetUserName(User);
 
-        public void RegisterLogin(User user)
-            => signInManager.SignInAsync(user, true);
+        public async Task RegisterLoginAsync(User user)
+            => await signInManager.SignInAsync(user, true);
     }
 }

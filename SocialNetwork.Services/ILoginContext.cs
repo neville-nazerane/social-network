@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SocialNetwork.Services
 {
@@ -12,7 +13,7 @@ namespace SocialNetwork.Services
 
         string UserName { get; }
 
-        void RegisterLogin(User user);
+        Task RegisterLoginAsync(User user);
 
     }
 }

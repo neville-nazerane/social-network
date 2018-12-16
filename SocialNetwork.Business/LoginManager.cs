@@ -44,7 +44,7 @@ namespace SocialNetwork.Business
                                         .CheckPasswordSignInAsync(user, login.Password, false);
                 if (result.Succeeded)
                 {
-                    loginContext.RegisterLogin(user);
+                    await loginContext.RegisterLoginAsync(user);
                     return true;
                 }
                 else if (result.IsLockedOut) modelValidator.AddError("Account has been locked out");

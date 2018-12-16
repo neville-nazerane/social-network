@@ -3,6 +3,7 @@ using SocialNetwork.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SocialNetwork.TestSimulations
 {
@@ -15,7 +16,10 @@ namespace SocialNetwork.TestSimulations
 
         public string UserName => User.UserName;
 
-        public void RegisterLogin(User user) => User = user;
-
+        public Task RegisterLoginAsync(User user)
+        {
+            User = user;
+            return Task.CompletedTask;
+        }
     }
 }
