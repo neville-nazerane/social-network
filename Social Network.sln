@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialNetwork.Services.Test
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialNetwork.TestSimulations", "SocialNetwork.TestSimulations\SocialNetwork.TestSimulations.csproj", "{78B91DB1-7FDC-42DD-AE0D-2D599271728D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetwork.Website", "SocialNetwork.Website\SocialNetwork.Website.csproj", "{B03704E9-F664-4532-9A48-4F1E95A98754}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +155,18 @@ Global
 		{78B91DB1-7FDC-42DD-AE0D-2D599271728D}.Release|x64.Build.0 = Release|Any CPU
 		{78B91DB1-7FDC-42DD-AE0D-2D599271728D}.Release|x86.ActiveCfg = Release|Any CPU
 		{78B91DB1-7FDC-42DD-AE0D-2D599271728D}.Release|x86.Build.0 = Release|Any CPU
+		{B03704E9-F664-4532-9A48-4F1E95A98754}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B03704E9-F664-4532-9A48-4F1E95A98754}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B03704E9-F664-4532-9A48-4F1E95A98754}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B03704E9-F664-4532-9A48-4F1E95A98754}.Debug|x64.Build.0 = Debug|Any CPU
+		{B03704E9-F664-4532-9A48-4F1E95A98754}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B03704E9-F664-4532-9A48-4F1E95A98754}.Debug|x86.Build.0 = Debug|Any CPU
+		{B03704E9-F664-4532-9A48-4F1E95A98754}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B03704E9-F664-4532-9A48-4F1E95A98754}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B03704E9-F664-4532-9A48-4F1E95A98754}.Release|x64.ActiveCfg = Release|Any CPU
+		{B03704E9-F664-4532-9A48-4F1E95A98754}.Release|x64.Build.0 = Release|Any CPU
+		{B03704E9-F664-4532-9A48-4F1E95A98754}.Release|x86.ActiveCfg = Release|Any CPU
+		{B03704E9-F664-4532-9A48-4F1E95A98754}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
