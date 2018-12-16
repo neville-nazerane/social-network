@@ -33,7 +33,8 @@ namespace SocialNetwork.Services.Test
             });
             await LoginWithDefaultAsync();
             var displayUserRepository = GetService<IDisplayUserRepository>();
-            friendId = displayUserRepository.Get().Single(u => u.FirstName == "Doe").Id;
+            friendId = displayUserRepository
+                            .Search(new DisplayUserSearch { FirstName = "Doe" }).SingleOrDefault().Id;
         }
 
         [Fact]

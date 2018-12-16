@@ -20,19 +20,14 @@ namespace SocialNetwork.Business
             this.loginContext = loginContext;
         }
 
-        public DisplayUser Add(SignUp displayUser) => access.Add(displayUser);
-
         public DisplayUser Update(DisplayUserUpdate displayUser) 
             => access.Update(displayUser, loginContext.UserId);
+        
+        public DisplayUser GetCurrent() => access.GetByUserId(loginContext.UserId);
 
-        public bool Delete(int id) => access.Delete(id);
-
-        public bool Exists(int id) => access.Exists(id);
-
-        public DisplayUser Get(int id) => access.Get(id);
+        public IEnumerable<DisplayUser> Search(DisplayUserSearch search) => access.Search(search);
 
         public IEnumerable<DisplayUser> Get() => access.Get();
-
-        public DisplayUser GetCurrent() => Get(loginContext.UserId);
+        
     }
 }

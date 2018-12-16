@@ -2,6 +2,7 @@
 using SocialNetwork.Services.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
@@ -21,6 +22,20 @@ namespace SocialNetwork.Services.Test.Repositories
         {
             await SignUpWithDefaultsAsync();
             await LoginWithDefaultAsync();
+        }
+
+        [Fact]
+        public async Task UserCountTest()
+        {
+            await InitAsync();
+            Assert.Single(repository.Get());
+
+            var signup2 = DefaultSignUp;
+            signup2.UserName = "newname";
+            signup2.Email = "name@gmail.com";
+            await SignUpAsync(signup2);
+            Assert.Equal(2, repository.Get().Count());
+            Assert.Single(repository.Search(new DisplayUserSearch { UserName = "new" }));
         }
 
         [Fact]

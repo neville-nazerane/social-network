@@ -9,27 +9,54 @@ using System.Text;
 
 namespace SocialNetwork.DataAccess
 {
-    class DisplayUserAccess 
-            : AccessDefaults<DisplayUser, SignUp, DisplayUserUpdate>, IDisplayUserAccess
+    class DisplayUserAccess :  IDisplayUserAccess
     {
+        private readonly AppDbContext context;
 
-        public DisplayUserAccess(AppDbContext context) : base(context)
+        public DisplayUserAccess(AppDbContext context)
         {
-
+            this.context = context;
         }
 
-        protected override DbSet<DisplayUser> Entity => context.DisplayUsers;
-
-        protected override DisplayUser AddMapping(SignUp add)
-            => new DisplayUser {
-                FirstName = add.FirstName,
-                LastName = add.LastName
+        public DisplayUser Add(SignUp signUp, int userId)
+        {
+            var toAdd = new DisplayUser
+            {
+                CreatedOn = DateTime.Now,
+                FirstName = signUp.FirstName,
+                LastName = signUp.LastName,
+                UserId = userId
             };
-
-        protected override void UpdateMapping(DisplayUser toUpdate, DisplayUserUpdate update)
-        {
-            toUpdate.FirstName = update.FirstName;
-            toUpdate.LastName = update.LastName;
+            context.Add(toAdd);
+            context.SaveChanges();
+            return toAdd;
         }
+
+        public DisplayUser Update(DisplayUserUpdate displayUser, int id)
+        {
+            var toEdit = context.DisplayUsers.SingleOrDefault(u => u.Id == id);
+            if (toEdit != null)
+            {
+                toEdit.FirstName = displayUser.FirstName;
+                toEdit.LastName = displayUser.LastName;
+            }
+            context.SaveChanges();
+            return toEdit;
+        }
+        public DisplayUser Get(int id)
+            => context.DisplayUsers.AsNoTracking().SingleOrDefault(u => u.Id == id);
+
+        public IEnumerable<DisplayUser> Get()
+            => context.DisplayUsers.AsNoTracking().ToList();
+
+        public IEnumerable<DisplayUser> Search(DisplayUserSearch s)
+            => context.DisplayUsers.AsNoTracking().Where(u => 
+                               (string.IsNullOrWhiteSpace(s.FirstName) || u.FirstName.StartsWith(s.FirstName))
+                            && (string.IsNullOrWhiteSpace(s.LastName) || u.LastName.StartsWith(s.LastName))
+                            && (string.IsNullOrWhiteSpace(s.UserName) || u.User.UserName.StartsWith(s.UserName)));
+
+        public DisplayUser GetByUserId(int userId)
+            => context.DisplayUsers.AsNoTracking().SingleOrDefault(u => u.UserId == userId);
+
     }
 }

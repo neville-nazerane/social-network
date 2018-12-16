@@ -3,6 +3,7 @@ using NetCore.ModelValidation.Core;
 using SocialNetwork.Core.Entities;
 using SocialNetwork.Core.Models;
 using SocialNetwork.Services;
+using SocialNetwork.Services.DataAccess;
 using SocialNetwork.Services.Repositories;
 using System;
 using System.Collections.Generic;
@@ -15,19 +16,19 @@ namespace SocialNetwork.Business
     class LoginManager : ILoginManager
     {
         private readonly SignInManager<User> signInManager;
-        private readonly IDisplayUserRepository displayUserRepository;
+        private readonly IDisplayUserAccess displayUserAccess;
         private readonly ModelValidator modelValidator;
         private readonly ILoginContext loginContext;
 
         public LoginManager(
-                                SignInManager<User> signInManager,
-                                IDisplayUserRepository displayUserRepository,
-                                ModelValidator modelValidator,
-                                ILoginContext loginContext
+                            SignInManager<User> signInManager,
+                            IDisplayUserAccess displayUserAccess,
+                            ModelValidator modelValidator,
+                            ILoginContext loginContext
                             )
         {
             this.signInManager = signInManager;
-            this.displayUserRepository = displayUserRepository;
+            this.displayUserAccess = displayUserAccess;
             this.modelValidator = modelValidator;
             this.loginContext = loginContext;
         }
@@ -63,7 +64,7 @@ namespace SocialNetwork.Business
             var result = await UserManager.CreateAsync(user, signUp.Password);
             if (result.Succeeded)
             {
-                displayUserRepository.Add(signUp);
+                displayUserAccess.Add(signUp, user.Id);
                 return true;
             }
             else
