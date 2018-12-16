@@ -40,7 +40,7 @@ namespace SocialNetwork.DataAccess
         {
             var toUpdate = Entity.SingleOrDefault(e => e.Id == id);
             UpdateMapping(toUpdate, update);
-            toUpdate.UpdatedOn = DateTime.Now;
+            toUpdate.RespondedOn = DateTime.Now;
             try { 
                 context.SaveChanges();
                 return toUpdate;
@@ -64,7 +64,7 @@ namespace SocialNetwork.DataAccess
 
         public virtual bool Exists(int id) => Entity.Any(e => e.Id == id);
 
-        public virtual IEnumerable<TEntity> Get() => Entity.AsNoTracking();
+        public virtual IEnumerable<TEntity> Get() => Entity.AsNoTracking().AsEnumerable();
 
     }
 }

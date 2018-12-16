@@ -25,7 +25,8 @@ namespace Microsoft.Extensions.DependencyInjection
             options.Invoke(opts);
             return services
                         .AddScoped<ILoginManager, LoginManager>()
-                        .AddScoped<IDisplayUserRepository, DisplayUserRepository>();
+                        .AddScoped<IDisplayUserRepository, DisplayUserRepository>()
+                        .AddScoped<IFriendManager, FriendManager>();
         }
 
     }

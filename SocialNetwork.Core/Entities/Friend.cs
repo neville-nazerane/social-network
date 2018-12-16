@@ -22,7 +22,7 @@ namespace SocialNetwork.Core.Entities
         [Required]
         public DateTime? CreatedOn { get; set; }
 
-        public DateTime? UpdatedOn { get; set; }
+        public DateTime? RespondedOn { get; set; }
 
     }
 }

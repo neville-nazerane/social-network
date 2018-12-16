@@ -17,7 +17,7 @@ namespace SocialNetwork.Services
 
         FriendStatus GetStatus(int userId);
 
-        IEnumerable<DisplayUser> ListFriends();
+        IEnumerable<DisplayUser> List();
 
     }
 }

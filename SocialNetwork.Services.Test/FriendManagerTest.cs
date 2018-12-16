@@ -72,7 +72,7 @@ namespace SocialNetwork.Services.Test
             friendManager.Reject(requestId);
             await LoginWithDefaultAsync();
             var status = friendManager.GetStatus(friendId);
-            Assert.Equal(FriendStatus.HasRejected, status);
+            Assert.Equal(FriendStatus.None, status);
         }
 
     }

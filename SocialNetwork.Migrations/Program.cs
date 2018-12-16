@@ -17,8 +17,15 @@ namespace SocialNetwork.Migrations
             CreateWebHostBuilder(args).Build().Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+        // additional code
+            .UseConfiguration(
+                new ConfigurationBuilder()
+                .AddXmlFile("file.xml", true) // second param is if file is optional
+                .Build()
+            )
+        // end of additional code
+            .UseStartup<Startup>();
     }
 }

@@ -7,7 +7,7 @@ namespace SocialNetwork.Core.Models
     public enum FriendStatus
     {
 
-        RequestSent, RequestRecieved, IsFriend, HasRejected
+        None, RequestSent, RequestRecieved, IsFriend
         
     }
 }

@@ -11,7 +11,7 @@ namespace SocialNetwork.Core.Defaults
 
         DateTime? CreatedOn { get; set; }
 
-        DateTime? UpdatedOn { get; set; }
+        DateTime? RespondedOn { get; set; }
 
     }
 }
