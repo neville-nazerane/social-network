@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SocialNetwork.Core.Entities;
 using SocialNetwork.Data;
 using System;
 using System.Collections.Generic;
@@ -13,5 +14,7 @@ namespace SocialNetwork.Migrations
                 : base(options)
         {
         }
+
     }
+
 }

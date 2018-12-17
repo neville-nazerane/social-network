@@ -19,5 +19,19 @@ namespace SocialNetwork.Data
 
         public DbSet<FriendRequest> FriendRequests { get; set; }
 
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<DisplayUser>()
+                            .RelationBuilder()
+                                .OneToManyRestrict<FriendRequest>(f => f.Requester)
+                                .OneToManyRestrict<FriendRequest>(f => f.RequestedFor)
+                                .OneToManyRestrict<Friend>(f => f.User1)
+                                .OneToManyRestrict<Friend>(f => f.User2);
+
+        }
+
     }
 }

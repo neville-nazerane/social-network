@@ -10,9 +10,5 @@ namespace SocialNetwork.Core.Entities
 
         public DisplayUser DisplayUser { get; set; }
 
-        public static implicit operator User(User v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
