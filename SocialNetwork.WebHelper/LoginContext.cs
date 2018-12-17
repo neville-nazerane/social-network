@@ -37,5 +37,8 @@ namespace SocialNetwork.WebHelper
 
         public async Task RegisterLoginAsync(User user)
             => await signInManager.SignInAsync(user, true);
+
+        public async Task LogoutAsync() => await signInManager.SignOutAsync();
+
     }
 }

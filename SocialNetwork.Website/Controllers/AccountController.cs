@@ -21,9 +21,6 @@ namespace SocialNetwork.Website.Controllers
             this.displayUserRepository = displayUserRepository;
         }
 
-        [Authorize]
-        public IActionResult Index() => View(displayUserRepository.GetCurrent());
-
         [HttpGet]
         public IActionResult Login() => View();
 
@@ -48,6 +45,12 @@ namespace SocialNetwork.Website.Controllers
                 else return Redirect("~" + signUp.ReturnURL);
             }
             else return this.ValidateAndView(signUp);
+        }
+
+        public async Task<IActionResult> SignOut()
+        {
+            await loginManager.LogoutAsync();
+            return Redirect("~/");
         }
 
     }

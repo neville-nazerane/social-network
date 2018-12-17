@@ -16,6 +16,12 @@ namespace SocialNetwork.TestSimulations
 
         public string UserName => User.UserName;
 
+        public Task LogoutAsync()
+        {
+            User = null;
+            return Task.CompletedTask;
+        }
+
         public Task RegisterLoginAsync(User user)
         {
             User = user;

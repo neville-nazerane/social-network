@@ -20,7 +20,7 @@ namespace SocialNetwork.Business
             this.loginContext = loginContext;
         }
 
-        public DisplayUser Update(DisplayUserUpdate displayUser) 
+        public DisplayUser UpdateCurrent(DisplayUserUpdate displayUser) 
             => access.Update(displayUser, loginContext.UserId);
         
         public DisplayUser GetCurrent() => access.GetByUserId(loginContext.UserId);

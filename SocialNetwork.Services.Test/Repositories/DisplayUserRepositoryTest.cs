@@ -53,7 +53,7 @@ namespace SocialNetwork.Services.Test.Repositories
             await InitAsync();
             string changedFirstName = "NewFName";
             string changedLastName = "NewFName";
-            var updated = repository.Update(new DisplayUserUpdate {
+            var updated = repository.UpdateCurrent(new DisplayUserUpdate {
                 FirstName = changedFirstName,
                 LastName = changedLastName
             });

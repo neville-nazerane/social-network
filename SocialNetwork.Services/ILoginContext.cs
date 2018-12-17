@@ -15,5 +15,6 @@ namespace SocialNetwork.Services
 
         Task RegisterLoginAsync(User user);
 
+        Task LogoutAsync();
     }
 }

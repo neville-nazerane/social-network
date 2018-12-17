@@ -12,7 +12,7 @@ namespace SocialNetwork.Services.Repositories
 
         DisplayUser GetCurrent();
 
-        DisplayUser Update(DisplayUserUpdate displayUser);
+        DisplayUser UpdateCurrent(DisplayUserUpdate displayUser);
 
         IEnumerable<DisplayUser> Search(DisplayUserSearch search);
         IEnumerable<DisplayUser> Get();

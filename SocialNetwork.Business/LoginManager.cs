@@ -54,8 +54,12 @@ namespace SocialNetwork.Business
             return false;
         }
 
+        public async Task LogoutAsync()
+            => await loginContext.LogoutAsync();
+
         public async Task<bool> SignUpAsync(SignUp signUp)
         {
+
             var user = new User
             {
                 UserName = signUp.UserName,
