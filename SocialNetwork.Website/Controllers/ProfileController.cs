@@ -22,7 +22,7 @@ namespace SocialNetwork.Website.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index() => View(repository.GetCurrent());
+        public IActionResult Index() => View(repository.GetCurrentUpdate());
 
         [HttpPost]
         public IActionResult Index(DisplayUserUpdate user)

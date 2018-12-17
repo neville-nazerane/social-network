@@ -11,6 +11,7 @@ namespace SocialNetwork.Services.Repositories
     {
 
         DisplayUser GetCurrent();
+        DisplayUserUpdate GetCurrentUpdate();
 
         DisplayUser UpdateCurrent(DisplayUserUpdate displayUser);
 

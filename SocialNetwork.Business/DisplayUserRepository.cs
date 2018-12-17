@@ -28,6 +28,14 @@ namespace SocialNetwork.Business
         public IEnumerable<DisplayUser> Search(DisplayUserSearch search) => access.Search(search);
 
         public IEnumerable<DisplayUser> Get() => access.Get();
-        
+
+        public DisplayUserUpdate GetCurrentUpdate()
+        {
+            var user = GetCurrent();
+            return new DisplayUserUpdate {
+                FirstName = user.FirstName,
+                LastName = user.LastName
+            };
+        }
     }
 }
