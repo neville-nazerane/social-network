@@ -46,18 +46,15 @@
                             <a href="~/account/signout" class="nav-link" >Logout</a>
                         </li>
                     </ul>
-                    @*<ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>*@
-                    <form class="form-inline flex-grow-1 input-group">
-                        <input class="form-control" type="text" placeholder="Search someone..." />
+                    <form method="get" asp-controller="Home" asp-action="Search" class="form-inline flex-grow-1 input-group">
+                        <input name="q" class="form-control" type="text" placeholder="Search someone..." />
                         <input class="btn btn-success input-group-append" type="submit" value="Search" />
                     </form>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="~/profile/friends">Friends</a>
+                        </li>
+                    </ul>
                     }
                 </div>
             </div>

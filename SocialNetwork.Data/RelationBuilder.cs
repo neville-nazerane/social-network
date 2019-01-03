@@ -17,6 +17,21 @@ namespace SocialNetwork.Data
             this.entity = entity;
         }
 
+
+        public RelationBuilder<TEntity> OneToOneRestrict<TRelated>(Expression<Func<TRelated, TEntity>> navigationExpression)
+            where TRelated : class
+        {
+            entity.HasOne<TRelated>().WithOne(navigationExpression).OnDelete(DeleteBehavior.Restrict);
+            return this;
+        }
+
+        public RelationBuilder<TEntity> OneToOneSetNull<TRelated>(Expression<Func<TRelated, TEntity>> navigationExpression)
+            where TRelated : class
+        {
+            entity.HasOne<TRelated>().WithOne(navigationExpression).OnDelete(DeleteBehavior.SetNull);
+            return this;
+        }
+
         public RelationBuilder<TEntity> OneToManyRestrict<TRelated>(Expression<Func<TRelated, TEntity>> navigationExpression)
             where TRelated : class
         {

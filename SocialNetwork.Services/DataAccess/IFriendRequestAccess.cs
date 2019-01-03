@@ -9,13 +9,13 @@ namespace SocialNetwork.Services.DataAccess
     public interface IFriendRequestAccess
     {
 
-        FriendStatus GetStatus(int userId1, int userId2);
+        FriendStatus GetStatus(int userId1, int displayUserId2);
 
-        int Request(int userId1, int userId2);
+        int Request(int userId1, int displayUserId2);
 
-        bool Reject(int userId, int requestId);
+        bool Reject(int requestedForUserId, int requesterDisplayId);
 
-        bool Accept(int userId, int requestId);
+        bool Accept(int requestedForUserId, int requesterDisplayId);
 
         IEnumerable<DisplayUser> List(int userId);
 

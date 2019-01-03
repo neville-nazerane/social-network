@@ -10,12 +10,16 @@ namespace SocialNetwork.Services.Repositories
     public interface IDisplayUserRepository
     {
 
+        DisplayUser Get(int id);
+
         DisplayUser GetCurrent();
         DisplayUserUpdate GetCurrentUpdate();
 
         DisplayUser UpdateCurrent(DisplayUserUpdate displayUser);
 
-        IEnumerable<DisplayUser> Search(DisplayUserSearch search);
         IEnumerable<DisplayUser> Get();
+
+        IEnumerable<DisplayUser> Search(DisplayUserSearch search);
+        IEnumerable<DisplayUser> Search(string q);
     }
 }

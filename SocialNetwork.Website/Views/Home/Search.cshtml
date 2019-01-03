@@ -1,0 +1,53 @@
+﻿@model SearchViewModel
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h1>Search Results</h1>
+
+<a href="#searchForm" data-toggle="collapse">Advanced Search</a>
+<hr />
+<div id="searchForm" class="row collapse">
+    <div class="col-md-4">
+        <form method="post" asp-action="Search">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Search.UserName" class="control-label"></label>
+                <input asp-for="Search.UserName" class="form-control" />
+                <span asp-validation-for="Search.UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Search.FirstName" class="control-label"></label>
+                <input asp-for="Search.FirstName" class="form-control" />
+                <span asp-validation-for="Search.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Search.LastName" class="control-label"></label>
+                <input asp-for="Search.LastName" class="form-control" />
+                <span asp-validation-for="Search.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="">
+    @foreach (var user in Model.Results)
+    {
+        <div class="card">
+            <div class="card-body">
+                <a href="~/user/@user.Id" class="card-link">
+                    <h2 class="card-title">@user.FirstName @user.LastName</h2>
+                </a>
+            </div>
+        </div>
+    }
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

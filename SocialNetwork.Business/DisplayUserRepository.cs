@@ -27,6 +27,8 @@ namespace SocialNetwork.Business
 
         public IEnumerable<DisplayUser> Search(DisplayUserSearch search) => access.Search(search);
 
+        public IEnumerable<DisplayUser> Search(string q) => access.Search(q);
+
         public IEnumerable<DisplayUser> Get() => access.Get();
 
         public DisplayUserUpdate GetCurrentUpdate()
@@ -37,5 +39,8 @@ namespace SocialNetwork.Business
                 LastName = user.LastName
             };
         }
+
+        public DisplayUser Get(int id) => access.Get(id);
+
     }
 }

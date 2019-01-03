@@ -9,13 +9,13 @@ namespace SocialNetwork.Services
     public interface IFriendManager
     {
 
-        int Request(int userId);
+        int Request(int displayUserId);
 
-        void Accept(int requestId);
+        void Accept(int displayUserId);
 
-        void Reject(int requestId);
+        void Reject(int displayUserId);
 
-        FriendStatus GetStatus(int userId);
+        FriendStatus GetStatus(int displayUserId);
 
         IEnumerable<DisplayUser> List();
 

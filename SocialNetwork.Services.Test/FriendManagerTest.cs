@@ -12,11 +12,13 @@ namespace SocialNetwork.Services.Test
     public class FriendManagerTest : TestDefaults
     {
         private readonly IFriendManager friendManager;
+        private readonly ILoginContext loginContext;
         private int friendId;
 
         public FriendManagerTest()
         {
             friendManager = GetService<IFriendManager>();
+            loginContext = GetService<ILoginContext>();
         }
 
         const string friendUserName = "theFriend";
@@ -38,25 +40,28 @@ namespace SocialNetwork.Services.Test
         }
 
         [Fact]
-        public async Task<int> Request()
+        public async Task Request()
         {
             await InitAsync();
             int id = friendManager.Request(friendId);
             Assert.NotEqual(0, id);
             var status = friendManager.GetStatus(friendId);
             Assert.Equal(FriendStatus.RequestSent, status);
-            return id;
         }
+
+        int GetCurrentUserDisplayId()
+            => GetService<IDisplayUserRepository>().GetCurrent().Id;
 
         [Fact]
         public async Task Accept()
         {
-            int requestId = await Request();
+            await Request();
+            int userDisplayId = GetCurrentUserDisplayId();
             await LoginAsync(new Login {
                 UserName = friendUserName,
                 Password = DefaultPassword
             });
-            friendManager.Accept(requestId);
+            friendManager.Accept(userDisplayId);
             await LoginWithDefaultAsync();
             var status = friendManager.GetStatus(friendId);
             Assert.Equal(FriendStatus.IsFriend, status);
@@ -65,12 +70,13 @@ namespace SocialNetwork.Services.Test
         [Fact]
         public async Task Reject()
         {
-            int requestId = await Request();
+            await Request();
+            int userDisplayId = GetCurrentUserDisplayId();
             await LoginAsync(new Login {
                 UserName = friendUserName,
                 Password = DefaultPassword
             });
-            friendManager.Reject(requestId);
+            friendManager.Reject(userDisplayId);
             await LoginWithDefaultAsync();
             var status = friendManager.GetStatus(friendId);
             Assert.Equal(FriendStatus.None, status);

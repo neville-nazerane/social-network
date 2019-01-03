@@ -15,10 +15,12 @@ namespace SocialNetwork.Website.Controllers
     public class ProfileController : Controller
     {
         private readonly IDisplayUserRepository repository;
+        private readonly IFriendManager friendManager;
 
-        public ProfileController(IDisplayUserRepository repository)
+        public ProfileController(IDisplayUserRepository repository, IFriendManager friendManager)
         {
             this.repository = repository;
+            this.friendManager = friendManager;
         }
 
         [HttpGet]
@@ -32,6 +34,8 @@ namespace SocialNetwork.Website.Controllers
             this.UpdateValidations();
             return View(user);
         }
+
+        public IActionResult Friends() => View(friendManager.List());
 
     }
 

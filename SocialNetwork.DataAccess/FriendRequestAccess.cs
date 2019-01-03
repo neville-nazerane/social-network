@@ -18,67 +18,61 @@ namespace SocialNetwork.DataAccess
             this.context = context;
         }
 
-        bool RequestResponse(int userId, int requestId, bool response, bool save = true)
+        public int Request(int userId1, int displayUserId2)
         {
-            var request = context.FriendRequests.SingleOrDefault(
-                        r => r.Id == requestId && r.RequestedForId == userId);
-            if (request == null) return false;
-            request.IsApproved = response;
-            request.RespondedOn = DateTime.Now;
-            context.SaveChanges();
-            return true;
-        }
-
-        public bool Accept(int userId, int requestId)
-        {
-            if (!RequestResponse(userId, requestId, true)) return false;
-            context.Add(new Friend {
-                User1Id = userId,
-                User2Id = requestId,
-                CreatedOn = DateTime.Now
-            });
-            context.SaveChanges();
-            return true;
-        }
-
-        public FriendStatus GetStatus(int userId, int otherId)
-        {
-            if (context.Friends.Any(
-                                f => (f.User1Id == userId && f.User2Id == otherId)
-                                 || (f.User2Id == userId && f.User1Id == otherId)))
-                return FriendStatus.IsFriend;
-
-            var request = context.FriendRequests.AsNoTracking().SingleOrDefault(
-                            r => ((r.RequesterId == userId && r.RequestedForId == otherId)
-                                || (r.RequesterId == otherId && r.RequestedForId == userId))
-                                && r.IsApproved != false);
-            if (request == null) return FriendStatus.None;
-            if (request.RequesterId == userId) return FriendStatus.RequestSent;
-            else if (request.RequestedForId == userId) return FriendStatus.RequestRecieved;
-            return FriendStatus.None;
-        }
-
-        public IEnumerable<DisplayUser> List(int userId)
-            => (from f in context.Friends.AsNoTracking()
-                  where f.User1Id == userId
-                  select f.User2)
-            .Union(from f in context.Friends.AsNoTracking()
-                   where f.User2Id == userId
-                   select f.User1);
-
-        public bool Reject(int userId, int requestId)
-            => RequestResponse(userId, requestId, false);
-
-        public int Request(int requesterId, int requestedForId)
-        {
-            var toAdd = new FriendRequest {
-                RequesterId = requesterId,
-                RequestedForId = requestedForId,
-                CreatedOn = DateTime.Now
+            var toAdd = new FriendRequest
+            {
+                CreatedOn = DateTime.Now,
+                RequesterId = context.DisplayUsers.Single(d => d.UserId == userId1).Id,
+                RequestedForId = displayUserId2
             };
             context.Add(toAdd);
             context.SaveChanges();
             return toAdd.Id;
         }
+        
+        FriendRequest GetRequest(int requestedForUserId, int requesterDisplayId)
+              => context.FriendRequests.SingleOrDefault(f => f.RequestedFor.UserId == requestedForUserId
+                                                        && f.RequesterId == requesterDisplayId);
+
+        bool RespondToRequest(int requestedForUserId, int requesterDisplayId, bool response)
+        {
+            var request = GetRequest(requestedForUserId, requesterDisplayId);
+            if (request == null) return false;
+            request.RespondedOn = DateTime.Now;
+            request.IsApproved = response;
+            context.SaveChanges();
+            return true;
+        }
+
+        public bool Accept(int requestedForUserId, int requesterDisplayId)
+            => RespondToRequest(requestedForUserId, requesterDisplayId, true);
+
+        public bool Reject(int requestedForUserId, int requesterDisplayId)
+            => RespondToRequest(requestedForUserId, requesterDisplayId, false);
+
+        public FriendStatus GetStatus(int userId1, int displayUserId2)
+        {
+            var request = context.FriendRequests.AsNoTracking()
+                .SingleOrDefault(f => (f.RequestedFor.UserId == userId1 && f.RequesterId == displayUserId2)
+                                    || (f.Requester.UserId == userId1 && f.RequestedForId == displayUserId2));
+
+            if (request.IsApproved == true) return FriendStatus.IsFriend;
+            if (request.IsApproved == false) return FriendStatus.None;
+            if (request.RequestedForId == displayUserId2) return FriendStatus.RequestSent;
+            if (request.RequesterId == displayUserId2) return FriendStatus.RequestRecieved;
+            return FriendStatus.None;
+        }
+
+        public IEnumerable<DisplayUser> List(int userId)
+            => (from f in context.Friends.AsNoTracking()
+                where f.User1.UserId == userId
+                select f.User1)
+            .Union(from f in context.Friends.AsNoTracking()
+                   where f.User2.UserId == userId
+                   select f.User2).ToList();
+
+
+
     }
 }

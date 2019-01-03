@@ -20,6 +20,7 @@ namespace SocialNetwork.DataAccess
 
         public DisplayUser Add(SignUp signUp, int userId)
         {
+
             var toAdd = new DisplayUser
             {
                 CreatedOn = DateTime.Now,
@@ -54,6 +55,10 @@ namespace SocialNetwork.DataAccess
                                (string.IsNullOrWhiteSpace(s.FirstName) || u.FirstName.StartsWith(s.FirstName))
                             && (string.IsNullOrWhiteSpace(s.LastName) || u.LastName.StartsWith(s.LastName))
                             && (string.IsNullOrWhiteSpace(s.UserName) || u.User.UserName.StartsWith(s.UserName)));
+
+        public IEnumerable<DisplayUser> Search(string q)
+            => context.DisplayUsers.AsNoTracking().Where(u => string.IsNullOrWhiteSpace(q) ||
+                                u.FirstName.StartsWith(q) || u.LastName.StartsWith(q) || u.User.UserName.StartsWith(q));
 
         public DisplayUser GetByUserId(int userId)
             => context.DisplayUsers.AsNoTracking().SingleOrDefault(u => u.UserId == userId);

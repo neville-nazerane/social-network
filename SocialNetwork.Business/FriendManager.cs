@@ -22,20 +22,19 @@ namespace SocialNetwork.Business
             this.access = access;
         }
 
-        public void Accept(int requestId)
-            => access.Accept(loginContext.UserId, requestId);
+        public void Accept(int displayUserId)
+            => access.Accept(loginContext.UserId, displayUserId);
 
-        public FriendStatus GetStatus(int userId)
-            => access.GetStatus(loginContext.UserId, userId);
+        public FriendStatus GetStatus(int displayUserId)
+            => access.GetStatus(loginContext.UserId, displayUserId);
 
         public IEnumerable<DisplayUser> List()
             => access.List(loginContext.UserId);
 
-        public void Reject(int requestId)
-            => access.Reject(loginContext.UserId, requestId);
+        public void Reject(int displayUserId) => access.Reject(loginContext.UserId, displayUserId);
 
-        public int Request(int userId)
-            => access.Request(loginContext.UserId, userId);
+        public int Request(int displayUserId)
+            => access.Request(loginContext.UserId, displayUserId);
 
     }
 }
