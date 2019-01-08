@@ -38,9 +38,15 @@ namespace SocialNetwork.Website.Controllers
             return RedirectToIndex(id);
         }
 
-        public IActionResult AcceptRequest(int id, int requestId)
+        public IActionResult AcceptRequest(int id)
         {
-            friendManager.Accept(requestId);
+            friendManager.Accept(id);
+            return RedirectToIndex(id);
+        }
+
+        public IActionResult CancelRequest(int id)
+        {
+            friendManager.CancelRequest(id);
             return RedirectToIndex(id);
         }
 

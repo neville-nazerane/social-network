@@ -8,7 +8,7 @@ namespace SocialNetwork.Services.DataAccess
 {
     public interface IDisplayUserAccess
     {
-        IEnumerable<DisplayUser> Search(DisplayUserSearch search);
+        IEnumerable<DisplayUser> Search(DisplayUserSearch search, int excludeUserId);
 
         DisplayUser Add(SignUp signUp, int userId);
 
@@ -19,6 +19,6 @@ namespace SocialNetwork.Services.DataAccess
         IEnumerable<DisplayUser> Get();
 
         DisplayUser GetByUserId(int userId);
-        IEnumerable<DisplayUser> Search(string q);
+        IEnumerable<DisplayUser> Search(string q, int excludeUserId);
     }
 }

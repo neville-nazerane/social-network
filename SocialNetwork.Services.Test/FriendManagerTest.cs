@@ -49,6 +49,15 @@ namespace SocialNetwork.Services.Test
             Assert.Equal(FriendStatus.RequestSent, status);
         }
 
+        [Fact]
+        public async Task CancelRequest()
+        {
+            await Request();
+            friendManager.CancelRequest(friendId);
+            var status = friendManager.GetStatus(friendId);
+            Assert.Equal(FriendStatus.None, status);
+        }
+
         int GetCurrentUserDisplayId()
             => GetService<IDisplayUserRepository>().GetCurrent().Id;
 

@@ -17,6 +17,8 @@ namespace SocialNetwork.Services.DataAccess
 
         bool Accept(int requestedForUserId, int requesterDisplayId);
 
+        bool CancelRequest(int requesterId, int requestedForDisplayId);
+
         IEnumerable<DisplayUser> List(int userId);
 
     }

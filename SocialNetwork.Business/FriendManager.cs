@@ -25,6 +25,9 @@ namespace SocialNetwork.Business
         public void Accept(int displayUserId)
             => access.Accept(loginContext.UserId, displayUserId);
 
+        public void CancelRequest(int displayUserId)
+            => access.CancelRequest(loginContext.UserId, displayUserId);
+
         public FriendStatus GetStatus(int displayUserId)
             => access.GetStatus(loginContext.UserId, displayUserId);
 

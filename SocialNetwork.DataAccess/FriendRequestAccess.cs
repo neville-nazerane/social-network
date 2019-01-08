@@ -31,13 +31,13 @@ namespace SocialNetwork.DataAccess
             return toAdd.Id;
         }
         
-        FriendRequest GetRequest(int requestedForUserId, int requesterDisplayId)
+        FriendRequest _getRequest(int requestedForUserId, int requesterDisplayId)
               => context.FriendRequests.SingleOrDefault(f => f.RequestedFor.UserId == requestedForUserId
                                                         && f.RequesterId == requesterDisplayId);
 
         bool RespondToRequest(int requestedForUserId, int requesterDisplayId, bool response)
         {
-            var request = GetRequest(requestedForUserId, requesterDisplayId);
+            var request = _getRequest(requestedForUserId, requesterDisplayId);
             if (request == null) return false;
             request.RespondedOn = DateTime.Now;
             request.IsApproved = response;
@@ -57,6 +57,7 @@ namespace SocialNetwork.DataAccess
                 .SingleOrDefault(f => (f.RequestedFor.UserId == userId1 && f.RequesterId == displayUserId2)
                                     || (f.Requester.UserId == userId1 && f.RequestedForId == displayUserId2));
 
+            if (request == null) return FriendStatus.None;
             if (request.IsApproved == true) return FriendStatus.IsFriend;
             if (request.IsApproved == false) return FriendStatus.None;
             if (request.RequestedForId == displayUserId2) return FriendStatus.RequestSent;
@@ -72,7 +73,14 @@ namespace SocialNetwork.DataAccess
                    where f.User2.UserId == userId
                    select f.User2).ToList();
 
-
-
+        public bool CancelRequest(int requesterId, int requestedForDisplayId)
+        {
+            var request = context.FriendRequests.SingleOrDefault(r => 
+                                r.Requester.Id == requesterId && r.RequestedForId == requestedForDisplayId);
+            if (request == null) return false;
+            context.Remove(request);
+            context.SaveChanges();
+            return true;
+        }
     }
 }

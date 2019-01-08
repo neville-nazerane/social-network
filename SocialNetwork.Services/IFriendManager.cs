@@ -15,6 +15,8 @@ namespace SocialNetwork.Services
 
         void Reject(int displayUserId);
 
+        void CancelRequest(int displayUserId);
+
         FriendStatus GetStatus(int displayUserId);
 
         IEnumerable<DisplayUser> List();

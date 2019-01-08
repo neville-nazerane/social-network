@@ -25,9 +25,9 @@ namespace SocialNetwork.Business
         
         public DisplayUser GetCurrent() => access.GetByUserId(loginContext.UserId);
 
-        public IEnumerable<DisplayUser> Search(DisplayUserSearch search) => access.Search(search);
+        public IEnumerable<DisplayUser> Search(DisplayUserSearch search) => access.Search(search, loginContext.UserId);
 
-        public IEnumerable<DisplayUser> Search(string q) => access.Search(q);
+        public IEnumerable<DisplayUser> Search(string q) => access.Search(q, loginContext.UserId);
 
         public IEnumerable<DisplayUser> Get() => access.Get();
 

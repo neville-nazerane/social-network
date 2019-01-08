@@ -7,5 +7,15 @@
 <h2>@Model.User.FirstName  @Model.User.LastName</h2>
 
 <div>
-    <b>Status: </b> @Model.FriendStatus
+    <b>Friend Status: </b> @Model.FriendStatus
 </div>
+
+@switch (Model.FriendStatus)
+{
+    case FriendStatus.None:
+        <a asp-action="AddRequest" asp-route-id="@Model.User.Id" class="btn btn-lg btn-success">Add Friend</a>
+        break;
+    case FriendStatus.RequestSent:
+        <a asp-action="CancelRequest" asp-route-id="@Model.User.Id" class="btn btn-lg btn-warning">Cancel Request</a>
+        break;
+}
