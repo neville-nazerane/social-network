@@ -13,6 +13,8 @@ namespace SocialNetwork.Data
         {
         }
 
+        public DbSet<Post> Posts { get; set; }
+
         public DbSet<DisplayUser> DisplayUsers { get; set; }
 
         public DbSet<Friend> Friends { get; set; }

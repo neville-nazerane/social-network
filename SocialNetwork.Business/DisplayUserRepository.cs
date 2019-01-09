@@ -22,8 +22,10 @@ namespace SocialNetwork.Business
 
         public DisplayUser UpdateCurrent(DisplayUserUpdate displayUser) 
             => access.Update(displayUser, loginContext.UserId);
-        
+
         public DisplayUser GetCurrent() => access.GetByUserId(loginContext.UserId);
+
+        public int GetCurrentId() => access.GetIdByUserId(loginContext.UserId);
 
         public IEnumerable<DisplayUser> Search(DisplayUserSearch search) => access.Search(search, loginContext.UserId);
 

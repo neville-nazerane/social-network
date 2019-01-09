@@ -13,6 +13,7 @@ namespace SocialNetwork.Services.Repositories
         DisplayUser Get(int id);
 
         DisplayUser GetCurrent();
+        int GetCurrentId();
         DisplayUserUpdate GetCurrentUpdate();
 
         DisplayUser UpdateCurrent(DisplayUserUpdate displayUser);

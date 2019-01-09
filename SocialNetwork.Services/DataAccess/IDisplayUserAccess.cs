@@ -19,6 +19,8 @@ namespace SocialNetwork.Services.DataAccess
         IEnumerable<DisplayUser> Get();
 
         DisplayUser GetByUserId(int userId);
+        int GetIdByUserId(int userId);
         IEnumerable<DisplayUser> Search(string q, int excludeUserId);
+
     }
 }

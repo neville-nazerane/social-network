@@ -68,5 +68,8 @@ namespace SocialNetwork.DataAccess
         public DisplayUser GetByUserId(int userId)
             => context.DisplayUsers.AsNoTracking().SingleOrDefault(u => u.UserId == userId);
 
+        public int GetIdByUserId(int userId)
+            => (from u in context.DisplayUsers where u.UserId == userId select u.Id).SingleOrDefault();
+
     }
 }

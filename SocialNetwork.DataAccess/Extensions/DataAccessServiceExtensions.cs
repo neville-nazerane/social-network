@@ -29,7 +29,8 @@ namespace Microsoft.Extensions.DependencyInjection
 
         static IServiceCollection Defaults(this IServiceCollection services)
             => services.AddScoped<IDisplayUserAccess, DisplayUserAccess>()
-                       .AddScoped<IFriendRequestAccess, FriendRequestAccess>();
+                       .AddScoped<IFriendRequestAccess, FriendRequestAccess>()
+                       .AddScoped<IPostAccess, PostAccess>();
 
     }
 }
